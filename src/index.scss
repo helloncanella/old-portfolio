@@ -1,6 +1,20 @@
-.redBg {
-    background-color: blue;
-    border-radius: 5px;
-    color: white;
-    padding: 5px;
+body{
+    margin:0;
+}
+
+img{
+    width:100%;    
+}
+
+//align to the grid
+main>*{
+    $p: 5%;
+    padding-left: $p;
+    padding-right: $p;
+    max-width: 768px;
+    margin: 0 auto;
+}
+
+.grid{
+    padding: 5%;
 }

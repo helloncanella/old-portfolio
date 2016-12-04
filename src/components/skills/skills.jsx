@@ -8,10 +8,10 @@ export default class Skills extends Component {
 
     return (
       <div className='skills'>
-        <Skill percentage={90}/>
-        <Skill percentage={60}/>
+        <Skill percentage={60} />
+        <Skill percentage={90} /> 
       </div>
-    ) 
+    )
 
   }
 
@@ -22,6 +22,35 @@ class Skill extends Component {
   constructor() {
     super()
     this.progressBarResizing = null;
+  }
+
+  componentDidMount() {
+    var self = this
+
+    this.adjustProgressStyle()
+
+    $(window).resize(()=>{
+      clearTimeout(self.progressBarResizing)
+      self.progressBarResizing = setTimeout(self.adjustProgressStyle, 200)
+    })
+
+  } 
+
+  adjustProgressStyle() {
+
+    const {halfProgress, progressContinuity, skill} = progressStyles
+
+      , skillWidth = $(`.${skill}`).width()
+
+
+   $('.'+skill).css({
+     'height': skillWidth + 'px'
+   })   
+
+    $(`.${halfProgress}, .${progressContinuity}`).css({
+      clip: `rect(0, ${skillWidth}px, ${skillWidth}px, ${skillWidth/2}px)`
+    })
+
   }
 
   render() {

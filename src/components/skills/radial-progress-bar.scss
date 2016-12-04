@@ -12,21 +12,21 @@
     }
 }
 
-$w: 100/5*1vw;
+$w: 100/10*1%;
 
 .skill{
-    height: $w;
+    width: $w;
+    position: relative;
 }
 
 .radialProgress{
-    width: $w;
+    width: 100%;
     position: absolute;
 
    .halfProgress, .progressContinuity{
        @include responsiveCircle(100%);
        position: absolute;
        background-color: blue;
-       clip: rect(0, $w, $w, $w/2)
    }
     
    .insideCircle{

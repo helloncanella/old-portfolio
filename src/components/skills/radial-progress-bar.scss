@@ -1,0 +1,48 @@
+@mixin responsiveCircle($diameter){
+    width: $diameter;
+    padding-top: $diameter;
+    border-radius: 50%;
+}
+
+//percentange maust be a number
+@mixin progressClass($percentage){
+    .percent#{$percentage} .halfProgress{
+        $rotate: 360deg * $percentage /100 - 180deg;
+        transform: rotate($rotate)
+    }
+}
+
+$w: 100/5*1vw;
+
+.skill{
+    height: $w;
+}
+
+.radialProgress{
+    width: $w;
+    position: absolute;
+
+   .halfProgress, .progressContinuity{
+       @include responsiveCircle(100%);
+       position: absolute;
+       background-color: blue;
+       clip: rect(0, $w, $w, $w/2)
+   }
+    
+   .insideCircle{
+       position: relative;
+       margin: 10% auto;
+       $size: 80%; // compared to father's width 
+       background-color: white;
+       @include responsiveCircle($size);
+   }
+
+
+}
+
+@include progressClass(100);
+@include progressClass(90);
+@include progressClass(80);
+@include progressClass(70);
+@include progressClass(60);
+@include progressClass(50);

@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import progressStyles from './radial-progress-bar.scss'
 import $ from 'jquery'
+import meteorLogo from './logos/meteor-logo.svg'
+
+console.log(meteorLogo)
 
 export default class Skills extends Component {
 

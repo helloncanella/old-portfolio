@@ -30,11 +30,20 @@ $w: 100/10*1%;
    }
     
    .insideCircle{
+       $size: 85%; // compared to father's width 
        position: relative;
-       margin: 10% auto;
-       $size: 80%; // compared to father's width 
+       margin: (100%-$size)/2;
        background-color: white;
        @include responsiveCircle($size);
+   }
+ 
+   .logo{
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       width: 50%;
+       transform: translate(-50%, -50%);
+       z-index:1;
    }
 
 

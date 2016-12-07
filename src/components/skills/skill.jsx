@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import progressStyles from './radial-progress-bar.scss'
 import $ from 'jquery'
 import {logos} from './logos/logos.js'
+import styles from './skills.scss'
 
 export class Skill extends Component {
 
@@ -24,7 +24,7 @@ export class Skill extends Component {
 
     adjustProgressStyle() {
 
-        const {halfProgress, progressContinuity, skill} = progressStyles
+        const {halfProgress, progressContinuity, skill} = styles
 
             , skillWidth = $(`.${skill}`).width()
 
@@ -41,17 +41,18 @@ export class Skill extends Component {
 
     render() {
 
-        const {halfProgress, progressContinuity, logo, skill, insideCircle, radialProgress } = progressStyles
+        const {halfProgress, progressContinuity, logo, skill, insideCircle, radialProgress } = styles
 
-            , {percentage} = this.props
+            , {percentage, className=''} = this.props
 
-            , progressClass = progressStyles[`percent${percentage}`]
+            , progressClass = styles[`percent${percentage}`]
 
-        , {img, style} = logos[this.props.brand]
+        , {img, style={}} = logos[this.props.brand]
 
+        
 
         return (
-            <div className={skill} >
+            <div className={`${skill} ${className}`} >
                 <div className={`${radialProgress} ${progressClass}`}>
                     <div className={halfProgress}></div>
                     <div className={progressContinuity}></div>

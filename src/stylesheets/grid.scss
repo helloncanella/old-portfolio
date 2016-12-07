@@ -1,0 +1,45 @@
+@mixin fluid-grid($cols:12, $gutter:5%, $grid-max-width:960px, $internal-lateral-padding:5%) {
+ 
+  .row { 
+    max-width: #{$grid-max-width};
+    margin: 0 auto;
+    padding: 0 #{$internal-lateral-padding};
+    &>* {
+      float: left;
+    }
+
+	&>* {
+		&:not(:last-child) {
+		margin-right: $gutter/2;
+		}
+		&:not(:first-child) {
+		margin-left: $gutter/2;
+		}
+	}
+
+    @include clearFloat()
+  }
+    
+  
+  @for $i from 1 through $cols{
+    
+    $ratio: $cols/$i;
+     
+    .col#{$i}Of#{$cols}{
+      width: (100%-($ratio - 1)*$gutter)/$ratio  
+    }
+      
+  
+  }
+    
+}
+
+@mixin clearFloat() {
+  &::after {
+    display: block;
+    clear: both;
+    content: ''
+  }
+}
+
+@include fluid-grid(12,8%, 960px, 8%)

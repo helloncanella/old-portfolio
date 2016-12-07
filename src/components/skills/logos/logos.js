@@ -1,9 +1,14 @@
-import meteorLogo from './meteor-logo.svg'
+import meteor from './meteor.svg'
+import html from './html.svg'
+import javascript from './javascript.svg'
+import react from './react.svg'
+import css from './css.svg'
 
 export const logos = {
-    react: {img: '', style: {}, name: ''},
-    css: {img: '', style: {}, name: ''},
-    javascript: {img: '', style: {}, name: ''},
-    reactNative: {img: '', style: {}, name: ''},
-    meteor: {img: meteorLogo, style: {}, name: 'Meteor'}
+    html : {img: html, name: 'HTML'},
+    react: {img: react, name: 'React'},
+    css: {img: css, name: 'CSS'},
+    javascript: {img: javascript, name: 'Javascript'},
+    reactNative: {img: react, name: 'React Native'},
+    meteor: {img: meteor, name: 'Meteor'}
 }

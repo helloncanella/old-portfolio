@@ -7,26 +7,18 @@ import Projects from './components/projects/projects.jsx'
 import Skills from './components/skills/all-skills.jsx'
 import Footer from './components/footer/footer.jsx'
 
-// export default class Home extends React.Component {
-// 	render() {
-// 		return (
-// 			<div className="home">
-// 				<Header />
-// 				<main>
-// 					<AboutMe/>
-// 				</main>
-// 				<Footer />
-// 			</div>
-// 		)
-// 	}
-// }
-
 export default class Home extends React.Component {
 	render() {
 		return (
 			<div className="home">
-				<Skills />
+				<Header />
+				<main>
+					<AboutMe/>
+					<Skills />
+				</main>
+				<Footer />
 			</div>
 		)
 	}
 }
+

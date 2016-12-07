@@ -6,19 +6,10 @@ img{
     width:100%;    
 }
 
-//align to the grid
-main>*{
-    $p: 5%;
-    padding-left: $p;
-    padding-right: $p;
-    max-width: 768px;
-    margin: 0 auto;
-}
-
-.grid{
-    padding: 5%;
-}
-
 *{
     font-family: 'Source Sans Pro', sans-serif; 
+}
+
+h1, h2, h3, h5, h5, h6{
+    text-align: center;
 }

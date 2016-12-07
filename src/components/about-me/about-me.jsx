@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import styles from './about-me.scss'
+import grid from '../../stylesheets/grid.scss'
 
 
 export default class AboutMe extends Component {
 
 	render() {
 		let { aboutMe, photo, text, socialNetwork } = styles
-		
+		const {row} = grid
+
 		return (
 			<div className={aboutMe}>
 				<div className={photo}>
@@ -14,7 +16,7 @@ export default class AboutMe extends Component {
 				</div>
 				<div className={text}>
 					<h2>Who I'm</h2>
-					<p>
+					<p className={row}>
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam inventore sapiente itaque, modi optio debitis, obcaecati amet eius maiores blanditiis at. Repudiandae, asperiores debitis ullam deleniti libero accusantium error, provident beatae, cumque impedit minus dolore dicta expedita alias, excepturi quae optio ea quos natus sint eos fugiat nostrum ut quam?
 					</p>
 				</div>

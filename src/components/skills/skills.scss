@@ -12,11 +12,18 @@
     }
 }
 
-$w: 100/10*1%;
+$background: #E80C7A;
+
+.skills{
+    background: $background;
+    $p: 1rem;
+    padding-top: $p;
+    padding-bottom: $p;  
+}
 
 .skill{
-    width: $w;
     position: relative;
+    margin-bottom: 1rem;
 }
 
 .radialProgress{
@@ -26,22 +33,22 @@ $w: 100/10*1%;
    .halfProgress, .progressContinuity{
        @include responsiveCircle(100%);
        position: absolute;
-       background-color: blue;
+       background-color: white;
    }
     
-   .insideCircle{
-       $size: 85%; // compared to father's width 
+   .insideCircle{  
+       $size: 80%; // compared to father's width 
        position: relative;
        margin: (100%-$size)/2;
-       background-color: white;
+       background-color: $background;
        @include responsiveCircle($size);
    }
  
    .logo{
-       position: absolute;
+       position: absolute; 
        top: 50%;
        left: 50%;
-       width: 50%;
+       width: 40%;
        transform: translate(-50%, -50%);
        z-index:1;
    }

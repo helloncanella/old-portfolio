@@ -1,0 +1,16 @@
+.backgroundMadeOfSVG{
+    width: 100vw;
+    position: relative;
+    color: white;
+
+    svg{
+        z-index: -1;
+        position: absolute;  
+    }
+
+}
+
+.content{
+  padding-top: 150px;
+  padding-bottom: 150px;
+}

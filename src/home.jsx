@@ -1,22 +1,21 @@
 import styles from './index.scss';
 import React from 'react';
-import Header from './components/header/header.jsx'
-import AboutMe from './components/about-me/about-me.jsx'
-import Contact from './components/contact/contact.jsx'
-import Projects from './components/projects/projects.jsx'
-import Skills from './components/skills/all-skills.jsx'
-import Footer from './components/footer/footer.jsx'
+import Header from './pages/header/header.jsx'
+import AboutMe from './pages/about-me/about-me.jsx'
+import Contact from './pages/contact/contact.jsx'
+import Projects from './pages/projects/projects.jsx'
+import Skills from './pages/skills/all-skills.jsx'
+import Footer from './pages/footer/footer.jsx'
 
 export default class Home extends React.Component {
 	render() {
 		return (
 			<div className="home">
-				<Header />
+				<Header />				
 				<main>
-					<AboutMe/>
-					<Skills />
+					<AboutMe />
 				</main>
-				<Footer />
+				<Footer/>
 			</div>
 		)
 	}

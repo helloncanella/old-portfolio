@@ -1,0 +1,22 @@
+.trapeze{
+    width: 100vw;
+    position: relative;
+    color: white;
+
+
+
+    svg{
+        z-index: -1;
+        position: absolute;
+
+        &.down{
+            transform: rotate(0)
+        }
+
+        &.up{
+            transform: rotate(180deg)
+        }
+    
+    }
+
+}

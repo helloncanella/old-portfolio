@@ -1,17 +1,25 @@
-import React, {Component} from 'react'
-import {Trapeze} from '../../components/trapeze/trapeze.js'
-
+import React, { Component } from 'react'
+import { Trapeze } from '../../components/trapeze/trapeze.js'
+import styles from './footer.scss'
+import grid from '../../stylesheets/grid.scss'
 
 export default class Footer extends Component {
 
-  render() {
+	render() {
+		const {row, col6Of12, col4Of12, col8Of12} = grid
+			, {footer, bottom, social, left, right, message} = styles
 
-    return (
-      <Trapeze direction="up" color="black" >
+		return (
+			<Trapeze direction="up" color="black">
+				<div className={`${row} ${footer}`}>
+					<h2 className={message}>Let's talk!</h2>
+					<input />
+					<input />
+					<textArea />
+				</div>
+			</Trapeze>
+		)
 
-      </Trapeze>
-    )
-
-  }
+	}
 
 }

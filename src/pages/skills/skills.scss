@@ -1,64 +1,30 @@
-@mixin responsiveCircle($diameter){
-    width: $diameter;
-    padding-top: $diameter;
-    border-radius: 50%;
-}
+.technologies{
+    .item{
+        background: black;
 
-//percentange maust be a number
-@mixin progressClass($percentage){
-    .percent#{$percentage} .halfProgress{
-        $rotate: 360deg * $percentage /100 - 180deg;
-        transform: rotate($rotate)
+        $pad: 1rem;
+        padding-top:$pad;
+        padding-bottom: $pad;
+        margin-top: 1.5rem;
+    
+        
+        img{
+            display: block;
+            margin: 0 auto;
+            max-width: 80%;
+        }
+
+        &.sameHeight{
+            height: 30vw;
+        }
     }
-}
 
-$background: #E80C7A;
+}
 
 .skills{
-    background: $background;
-    $p: 1rem;
-    padding-top: $p;
-    padding-bottom: $p;  
+    h2{
+        text-align: left;
+        margin-top: 2rem;
+    }
 }
-
-.skill{
-    position: relative;
-    margin-bottom: 1rem;
-}
-
-.radialProgress{
-    width: 100%;
-    position: absolute;
-
-   .halfProgress, .progressContinuity{
-       @include responsiveCircle(100%);
-       position: absolute;
-       background-color: white;
-   }
     
-   .insideCircle{  
-       $size: 80%; // compared to father's width 
-       position: relative;
-       margin: (100%-$size)/2;
-       background-color: $background;
-       @include responsiveCircle($size);
-   }
- 
-   .logo{
-       position: absolute; 
-       top: 50%;
-       left: 50%;
-       width: 40%;
-       transform: translate(-50%, -50%);
-       z-index:1;
-   }
-
-
-}
-
-@include progressClass(100);
-@include progressClass(90);
-@include progressClass(80);
-@include progressClass(70);
-@include progressClass(60);
-@include progressClass(50);

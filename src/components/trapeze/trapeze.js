@@ -29,10 +29,10 @@ export class Trapeze extends Component {
 
     render() {
         const {trapeze} = styles
-            , {color='purple', direction='down'} = this.props
+            , {color='purple', direction='down', className} = this.props
 
         return (
-            <div className={trapeze} ref="trapeze">
+            <div className={`${trapeze}`} ref="trapeze" style={this.props.style || {}}>
                 <svg width="100%" height="100%" viewBox={`0 0 100 100`} preserveAspectRatio="none" className={styles[direction]}>
                     <path d={`M0 0 L100 0 L100 ${this.state.verticalPosition} L0 100`} fill={color}/>
                 </svg>

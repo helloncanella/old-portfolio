@@ -14,6 +14,7 @@ export default class Home extends React.Component {
 				<Header />				
 				<main>
 					<AboutMe />
+					<Skills />
 				</main>
 				<Footer/>
 			</div>

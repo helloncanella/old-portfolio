@@ -12,9 +12,9 @@ export default class Footer extends Component {
 
 		return (
 			<Trapeze direction="up" color="black">
-				<div className={`${row} ${footer}`}>
-					<h2 className={message}>Let's talk!</h2>
-					<Contact />
+				<div className={`${footer}`}>
+					<h2 className={`${row} message`}>Let's talk!</h2>
+					<Contact className={`${row}`}/>
 				</div>
 			</Trapeze>
 		)

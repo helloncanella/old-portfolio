@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { findDOMNode } from 'react-dom';
+import styles from './form.scss'
+import grid from '../../stylesheets/grid.scss'
 
 export default class Contact extends Component {
 
@@ -16,42 +17,46 @@ export default class Contact extends Component {
     }
 
     sendXhr(data) {
-
         const {setXhrMessage} = this
 
         const xhr = new XMLHttpRequest()
-
-        xhr.open("POST", "http://localhost:3000")
+        xhr.open("POST", "https://email-canella.herokuapp.com/")
         xhr.setRequestHeader('Content-Type', 'application/json');
-
         xhr.onload = function onLoad() {
             if (xhr.status === 200) setXhrMessage('sucess!')
             else setXhrMessage('error:' + xhr.status)
         }
+
         xhr.send(data)
     }
 
-    onSubmit(e) {
-        e.preventDefault()
-
-        const {elements} = this.refs.form
-            , data = {}
+    getFormData() {
+        const {elements} = this.refs.form, data = {}
 
         for (let element of elements) {
             const {name, value} = element
             if (name) data[name] = value
         }
 
+        return data
+    }
+
+    onSubmit(e) {
+        e.preventDefault()
+        const data = this.getFormData()
         this.sendXhr(JSON.stringify(data))
     }
 
     form() {
+        const {form} = styles
+            , {row, col3Of12, col4Of12, col12Of12} = grid
+
         return (
-            <form className="contact" ref="form" onSubmit={this.onSubmit.bind(this)}>
+            <form className={`${form} ${row}`} ref="form" onSubmit={this.onSubmit.bind(this)}>
                 <input name="name" type="text" />
                 <input name="email" type="email" />
-                <textArea name="message" /> 
-                <input type="submit" value="Send" />
+                <textArea name="message" />
+                <input className={col4Of12} type="submit" value="Send" />
             </form>
         )
     }

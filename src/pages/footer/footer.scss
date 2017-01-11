@@ -3,17 +3,12 @@
     padding-top: $pad;
     padding-bottom: 2rem;
 
-    .message{
-        text-align: left;
+    h2{
+        text-align: left !important;
+        margin-bottom: 1rem;
     }
 
-    input, textarea{
-        width: 100%;
-        margin: 0 !important;
-        margin-bottom: 1rem !important;
-        font-size: 1.2rem;
-        display: block;
-    }
+    
 
     input{
         height:1.8rem;

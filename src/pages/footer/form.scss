@@ -1,0 +1,21 @@
+.form{
+
+    width : 100%;
+
+    input:not(*[type="submit"]), textarea{
+        width: 100%;
+    }
+
+    input, textarea{
+        margin: 0 !important;
+        margin-bottom: 1rem !important;
+        font-size: 1.2rem;
+        display: block;
+    }
+
+
+    *[type="submit"]{
+        float: right !important;
+    }
+
+}

@@ -4,8 +4,25 @@ import grid from '../../stylesheets/grid.scss'
 
 export default class SocialIcons extends Component {
 
-    allIcons(){
-        return [].map((iconClass, index)=><span className={iconClass} key={index}></span>)
+    renderIcon(company, link) {
+        const {icon} = styles
+        return (
+            <a href={link}>
+                <span className={`fa fa-fw fa-${company} ${icon}`} key={company}></span>
+            </a>
+        )
+    }
+
+    allIcons() {
+
+        var icons = []
+
+        for (var company in socialNetworks) {
+            const {link} = socialNetworks[company]
+            icons.push(this.renderIcon(company, link))
+        }
+
+        return icons
     }
 
     render() {
@@ -13,10 +30,20 @@ export default class SocialIcons extends Component {
 
         return (
             <div className={`${icons} ${this.props.className}`}>
-                <i className="fa fa-fw fa-question"></i>
+                {this.allIcons()}
             </div>
         )
     }
 }
 
-const iconsClass = []
+const socialNetworks = {
+    linkedin: {
+        link: 'https://br.linkedin.com/in/hellon-canella-4aa2b858'    
+    },
+    facebook: {
+        link: 'https://www.facebook.com/hellon.canella'
+    },
+    github: {
+        link: 'https://github.com/helloncanella'
+    }
+}

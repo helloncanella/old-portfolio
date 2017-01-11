@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Trapeze } from '../../components/trapeze/trapeze.js'
 import styles from './footer.scss'
 import grid from '../../stylesheets/grid.scss'
+import Contact from './form.jsx'
 
 export default class Footer extends Component {
 
@@ -13,9 +14,7 @@ export default class Footer extends Component {
 			<Trapeze direction="up" color="black">
 				<div className={`${row} ${footer}`}>
 					<h2 className={message}>Let's talk!</h2>
-					<input />
-					<input />
-					<textArea />
+					<Contact />
 				</div>
 			</Trapeze>
 		)

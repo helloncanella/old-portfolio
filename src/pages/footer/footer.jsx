@@ -3,6 +3,7 @@ import { Trapeze } from '../../components/trapeze/trapeze.js'
 import styles from './footer.scss'
 import grid from '../../stylesheets/grid.scss'
 import Contact from './form.jsx'
+import SocialIcons from './social-icons.jsx'
 
 export default class Footer extends Component {
 
@@ -14,7 +15,8 @@ export default class Footer extends Component {
 			<Trapeze direction="up" color="black">
 				<div className={`${footer}`}>
 					<h2 className={`${row} message`}>Let's talk!</h2>
-					<Contact className={`${row}`}/>
+					<Contact/>
+					<SocialIcons className={`${row}`} />
 				</div>
 			</Trapeze>
 		)

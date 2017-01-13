@@ -1,15 +1,11 @@
 @mixin fluid-grid($cols:12, $gutter:5%, $grid-max-width:960px, $internal-lateral-padding:5%) {
  
-	.row { 
-		max-width: #{$grid-max-width};
-		margin: 0 auto;
-		padding: 0 #{$internal-lateral-padding};
-		
-		&>* {
-			float: left;
-		}
+	.row {		
+		@include containerProps($grid-max-width, $internal-lateral-padding);
 
 		&>* {
+			float: left;
+
 			&:not(:last-child) {
 				margin-right: $gutter/2;
 			}
@@ -18,21 +14,67 @@
 			}
 		}
 
-		@include clearFloat()
+		@include clearFloat();
+
+		@include columnsClasses($cols, $gutter)
 	}
 
-  
-	@for $i from 1 through $cols{
 
-		$ratio: $cols/$i;
+    
+}
+
+@mixin masonry-grid($cols:12, $gutter:5%, $grid-max-width:960px, $internal-lateral-padding:5%){
+	
+	.masonry{
+		@include containerProps($grid-max-width, $internal-lateral-padding);
+
+		//the desandro's package use the full width of parent as reference
+		$widthReference: (100% - 2*$internal-lateral-padding);        
+
+		.gutter{
+			width: percentage-to-decimal($gutter)*$widthReference
+		}
+
+		$factor: percentage-to-decimal($widthReference);
+
+		@include columnsClasses($cols, $gutter, $factor);
+	}
+
+
+
+}
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@function percentage-to-decimal($percentage){
+	@return strip-unit($percentage) / 100;
+}
+
+
+@mixin containerProps($grid-max-width, $internal-lateral-padding){
+	max-width: #{$grid-max-width};
+	margin: 0 auto;
+	padding: 0 #{$internal-lateral-padding};
+}
+
+@mixin columnsClasses($numberOfCols,$gutter, $factor:1){
+
+	@for $i from 1 through $numberOfCols{
+
+		$ratio: $numberOfCols/$i;
 			
-		.col#{$i}Of#{$cols}{
-			width: (100%-($ratio - 1)*$gutter)/$ratio  
+		.col#{$i}Of#{$numberOfCols}{
+			width: (100%-($ratio - 1)*$gutter)/$ratio * $factor 
 		}
 
 	}
-    
-}
+} 
 
 @mixin clearFloat() {
   &::after {
@@ -42,4 +84,5 @@
   }
 }
 
-@include fluid-grid(12, 3%, 960px, 8%)
+@include fluid-grid(12, 3%, 960px, 8%);
+@include masonry-grid(12, 3%, 960px, 8%);

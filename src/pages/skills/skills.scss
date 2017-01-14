@@ -1,23 +1,4 @@
 .technologies{
-    .item{
-        background: black;
-
-        $pad: 1rem;
-        padding-top:$pad;
-        padding-bottom: $pad;
-        margin-top: .5rem;
-    
-        
-        img{
-            display: block;
-            margin: 0 auto;
-            max-width: 80%;
-        }
-
-        &.sameHeight{
-            height: 30vw;
-        }
-    }
 
 }
 

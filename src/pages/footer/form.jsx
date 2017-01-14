@@ -53,9 +53,9 @@ export default class Contact extends Component {
 
         return (
             <form className={`${form} ${row}`} ref="form" onSubmit={this.onSubmit.bind(this)}>
-                <input name="name" type="text" />
-                <input name="email" type="email" />
-                <textArea name="message" />
+                <input name="name" type="text" placeholder="Name"/>
+                <input name="email" type="email" placeholder="E-mail" />
+                <textArea name="message" placeholder="Message" />
                 <input className={col4Of12} type="submit" value="Send" />
             </form>
         )

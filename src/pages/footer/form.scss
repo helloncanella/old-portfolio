@@ -9,13 +9,28 @@
     input, textarea{
         margin: 0 !important;
         margin-bottom: 1rem !important;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         display: block;
+    
+        &:not(*[type="submit"]){
+            padding: 0.5rem !important;
+        }
     }
 
+    input:not(*[type="submit"]){
+        height: 45px;
+    }
+
+    textarea{
+        height: 125px;
+    }
+    
 
     *[type="submit"]{
         float: right !important;
+        height: 37px;
+        border-radius: 15px;
+        border: none;
     }
 
 }

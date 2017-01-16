@@ -2,9 +2,6 @@
 
     width : 100%;
 
-    input:not(*[type="submit"]), textarea{
-        width: 100%;
-    }
 
     input, textarea{
         margin: 0 !important;
@@ -14,6 +11,7 @@
     
         &:not(*[type="submit"]){
             padding: 0.5rem !important;
+            width: 100%;
         }
     }
 

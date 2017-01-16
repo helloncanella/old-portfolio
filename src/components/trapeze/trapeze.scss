@@ -4,10 +4,9 @@
     color: white;
 
 
-
     svg{
-        z-index: -1;
         position: absolute;
+        z-index: -1;
 
         &.down{
             transform: rotate(0)
@@ -15,8 +14,12 @@
 
         &.up{
             transform: rotate(180deg)
-        }
-    
+        }    
+    }
+
+    .children{
+        // position: absolute;
+        z-index: 2;
     }
 
 }

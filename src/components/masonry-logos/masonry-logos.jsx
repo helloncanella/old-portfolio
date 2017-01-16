@@ -14,7 +14,6 @@ export default class MasonryLogos extends Component {
             , {item} = styles
 
         for (let logo in logos) {
-
             const {col6Of12, col3Of12} = grid
                 , columnClass = logos[logo].size === 'big' ? col6Of12 : col3Of12
 
@@ -23,7 +22,6 @@ export default class MasonryLogos extends Component {
                     <img src={logos[logo].image} />
                 </div>
             )
-
         }
 
         return components

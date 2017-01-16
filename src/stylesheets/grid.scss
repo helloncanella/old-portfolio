@@ -32,12 +32,10 @@
 		$widthReference: (100% - 2*$internal-lateral-padding);        
 
 		.gutter{
-			width: percentage-to-decimal($gutter)*$widthReference
+			width: $gutter
 		}
-
-		$factor: percentage-to-decimal($widthReference);
-
-		@include columnsClasses($cols, $gutter, $factor);
+		
+		@include columnsClasses($cols, $gutter);
 	}
 
 
@@ -59,18 +57,19 @@
 
 @mixin containerProps($grid-max-width, $internal-lateral-padding){
 	max-width: #{$grid-max-width};
+	width: 80%;
 	margin: 0 auto;
-	padding: 0 #{$internal-lateral-padding};
+	// padding: 0 #{$internal-lateral-padding};
 }
 
-@mixin columnsClasses($numberOfCols,$gutter, $factor:1){
+@mixin columnsClasses($numberOfCols,$gutter){
 
 	@for $i from 1 through $numberOfCols{
 
 		$ratio: $numberOfCols/$i;
 			
 		.col#{$i}Of#{$numberOfCols}{
-			width: (100%-($ratio - 1)*$gutter)/$ratio * $factor 
+			width: (100%-($ratio - 1)*$gutter)/$ratio
 		}
 
 	}
@@ -84,5 +83,6 @@
   }
 }
 
-@include fluid-grid(12, 3%, 960px, 8%);
-@include masonry-grid(12, 3%, 960px, 8%);
+$w: 768px;
+@include fluid-grid(12, 3%, $w, 8%);
+@include masonry-grid(12, 3%, $w, 8%);

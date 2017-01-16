@@ -7,29 +7,40 @@ export class Trapeze extends Component {
     constructor() {
         super()
         this.state = {
-            verticalPosition: 90
+            verticalPosition: 90,
+            svgViewBoxWidth: 150
         }
     }
 
     componentDidMount() {
+        this.activeListeners()
         this.adjustSVG()
-        this.activeListeners()        
     }
 
-    adjustSVG(){
-        this.adjustSVGSize()
+    adjustSVG() {
+        if (this.props.image) {
+            this.correctProportion()
+            this.adjustSVGHeight()
+        }
         this.adjustSlope()
     }
 
+
     activeListeners() {
-        const adjustSVG = this.adjustSVG.bind(this)        
+        const adjustSVG = this.adjustSVG.bind(this)
         window.addEventListener('resize', adjustSVG)
     }
 
-    adjustSVGSize(){
-        if(this.props.image){
-            this.refs.trapeze.style.height = `${this.refs.svg.clientHeight}px`
-        }
+    adjustSVGHeight() {
+        this.refs.trapeze.style.height = `${this.refs.svg.clientHeight}px`
+    }
+
+    correctProportion() {
+        const {clientWidth: width} = this.refs.trapeze
+        let svgViewBoxWidth
+        if (768 <= width) svgViewBoxWidth = 180
+        if (1024 <= width) svgViewBoxWidth = 200
+        this.setState({ svgViewBoxWidth })
     }
 
     adjustSlope() {
@@ -42,32 +53,35 @@ export class Trapeze extends Component {
     image(id, image) {
         return (
             <pattern id={id} patternUnits="userSpaceOnUse" width="100%" height="450" >
-                <image href={image} x="0" y="0" width="120%" />
+                <image href={image} x="0" y="0" width="110%" />
             </pattern>
         )
     }
 
-    
+
 
     render() {
 
         const {trapeze} = styles
             , {color = 'purple', direction = 'down', className, image: imageUrl} = this.props
-        
-        let image = null, fill = color, id, preserveAspectRatio = "none", heightProp={height:"100%"}
+            , boxWidth = this.state.svgViewBoxWidth || 160
 
-        if(imageUrl){
+        console.log(this.state.svgViewBoxWidth)
+
+        let image = null, fill = color, id, preserveAspectRatio = "none", heightProp = { height: "100%" }
+
+        if (imageUrl) {
             id = "img1"
-            fill = `url(#${id})` 
+            fill = `url(#${id})`
             image = this.image(id, imageUrl)
             preserveAspectRatio = ''
-            heightProp={}
+            heightProp = {}
         }
 
         return (
             <div className={`${trapeze}`} ref="trapeze" style={this.props.style || {}}>
-                <svg {...heightProp} ref="svg" width="100%" viewBox={`0 0 150 100`} className={styles[direction]} preserveAspectRatio= {preserveAspectRatio} >
-                    <path d={`M0 0 L150 0 L150 ${this.state.verticalPosition} L0 100`} fill={fill} />
+                <svg {...heightProp} ref="svg" width="100%" viewBox={`0 0 ${boxWidth} 100`} className={styles[direction]} preserveAspectRatio={preserveAspectRatio} >
+                    <path d={`M0 0 L${boxWidth} 0 L${boxWidth} ${this.state.verticalPosition} L0 100`} fill={fill} />
                     {image}
                 </svg>
                 {this.props.children}

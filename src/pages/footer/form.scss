@@ -1,6 +1,6 @@
 .form{
 
-    width : 100%;
+    // width : 100%;
 
 
     input, textarea{
@@ -8,6 +8,8 @@
         margin-bottom: 1rem !important;
         font-size: 1.3rem;
         display: block;
+        border-radius: 3px;
+        border: none;
     
         &:not(*[type="submit"]){
             padding: 0.5rem !important;
@@ -16,18 +18,20 @@
     }
 
     input:not(*[type="submit"]){
-        height: 45px;
+        height: 35px;
     }
 
     textarea{
-        height: 125px;
+        height: 100px;
     }
     
 
     *[type="submit"]{
         float: right !important;
         height: 37px;
-        border-radius: 15px;
+        background: hsl(0, 0%, 20%);
+        color: white;
+        border-radius: 3px;
         border: none;
     }
 

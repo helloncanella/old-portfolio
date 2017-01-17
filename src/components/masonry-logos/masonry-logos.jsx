@@ -14,8 +14,8 @@ export default class MasonryLogos extends Component {
             , {item} = styles
 
         for (let logo in logos) {
-            const {col6Of12, col3Of12} = grid
-                , columnClass = logos[logo].size === 'big' ? col6Of12 : col3Of12
+            const {col6Of12, col3Of12, from320col3Of15, from320col5Of15} = grid
+                , columnClass = logos[logo].size === 'big' ? `${from320col5Of15} ${col6Of12}` : `${from320col3Of15} ${col3Of12}`
 
             components.push(
                 <div className={`${columnClass} ${item}`} style={{backgroundColor}}>

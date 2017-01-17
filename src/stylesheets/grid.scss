@@ -16,7 +16,9 @@
 
 		@include clearFloat();
 
-		@include columnsClasses($cols, $gutter)
+		@include columnsClasses($cols, $gutter);
+		@include break(768px);
+
 	}
 
 
@@ -36,6 +38,8 @@
 		}
 		
 		@include columnsClasses($cols, $gutter);
+		@include break(320px);
+		
 	}
 
 
@@ -55,6 +59,7 @@
 }
 
 
+
 @mixin containerProps($grid-max-width, $internal-lateral-padding){
 	max-width: #{$grid-max-width};
 	width: 80%;
@@ -62,18 +67,27 @@
 	// padding: 0 #{$internal-lateral-padding};
 }
 
-@mixin columnsClasses($numberOfCols,$gutter){
+@mixin columnsClasses($numberOfCols,$gutter, $prefix: ''){
 
 	@for $i from 1 through $numberOfCols{
 
 		$ratio: $numberOfCols/$i;
 			
-		.col#{$i}Of#{$numberOfCols}{
+		.#{$prefix}col#{$i}Of#{$numberOfCols}{
 			width: (100%-($ratio - 1)*$gutter)/$ratio
 		}
 
 	}
-} 
+}
+
+@mixin break($min-width){
+	$break: strip-unit($min-width); 
+
+	@media screen and (min-width: #{$min-width}){
+		@include columnsClasses(15, 3%, "from"+$break)
+	}	
+}
+ 
 
 @mixin clearFloat() {
   &::after {
@@ -86,3 +100,4 @@
 $w: 768px;
 @include fluid-grid(12, 3%, $w, 8%);
 @include masonry-grid(12, 3%, $w, 8%);
+
